@@ -1,0 +1,26 @@
+<div class="card shadow-effect" [routerLink]="['/post', postData.id]">
+  <img
+    src="{{ postData.data.postImgPath }}"
+    alt="card-post"
+    class="card-img-top"
+  />
+  <div class="card-body">
+    <small class="bg-light text-danger text-center">
+      {{ postData.data.category.categoryName }}</small
+    >
+    <small
+      *ngIf="postData.data.isFeatured"
+      class="bg-light text-sucess text-center ms-1"
+    >
+      Featured</small
+    >
+    <small class="bg-light text-info text-center ms-1">
+      Views - {{ postData.data.views }}</small
+    >
+    <h5 class="mt-1">{{ postData.data.title }}</h5>
+    <p class="mb-1">{{ postData.data.exercept }}</p>
+    <small class="bg-light text-warning text-center ms-1">
+      {{ postData.data.createdAt.toMillis() | date }}</small
+    >
+  </div>
+</div>

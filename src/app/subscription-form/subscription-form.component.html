@@ -1,0 +1,68 @@
+<div class="card shadow-effect">
+  <div class="card-body">
+    <div class="text-center mt-3 mb-5">
+      <h3 class="p-3">SUBSRIPTION FORM</h3>
+      <!-- <p class="m-auto subs-text">You can subscribe bellow!</p> -->
+      <form
+        #subscriptionForm="ngForm"
+        (ngSubmit)="onSubmit(subscriptionForm)"
+        class="row"
+      >
+        <div class="form-group col-md-5">
+          <input
+            type="text"
+            class="form-control shadow-effect"
+            placeholder="Your Name"
+            name="name"
+            #name="ngModel"
+            required
+            ngModel
+            [ngClass]="{ 'is-invalid': name.touched && name.invalid }"
+          />
+          <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+            Name must be provided
+          </div>
+        </div>
+
+        <div class="form-group col-md-5">
+          <input
+            type="email"
+            class="form-control shadow-effect"
+            placeholder="Email"
+            name="email"
+            #email="ngModel"
+            required
+            email
+            ngModel
+            [ngClass]="{ 'is-invalid': email.touched && email.invalid }"
+          />
+          <div *ngIf="email.errors?.required">
+            <div
+              *ngIf="email.touched && email.invalid"
+              class="alert alert-danger"
+            >
+              email must be provided
+            </div>
+          </div>
+          <div *ngIf="email.errors?.email">
+            <div
+              *ngIf="email.touched && email.invalid"
+              class="alert alert-danger"
+            >
+              email invalid
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button
+            [disabled]="subscriptionForm.invalid"
+            type="submit"
+            class="btn btn-info btn-block btn-theme"
+          >
+            SUBSCRIBE
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
